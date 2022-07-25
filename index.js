@@ -1,10 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./queries');
-const dotenv = require('dotenv');
-dotenv.config();
 const app = express();
-const port = process.env.PORT;
+const { port } = require('./config');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
