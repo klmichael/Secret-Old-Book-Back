@@ -4,9 +4,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 module.exports = {
   port: process.env.PORT,
-  dbuser: process.env.DBUSER,
-  dbhost: process.env.DBHOST,
-  dbname: process.env.DBNAME,
-  dbpassword: process.env.DBPASSWORD,
-  dbport: process.env.DBPORT,
+  dbuser: process.env.PGUSER,
+  dbhost: process.env.PGHOST,
+  dbname: process.env.PGDATABASE,
+  dbpassword: process.env.PGPASSWORD,
+  dbport: process.env.PGPORT,
 };
