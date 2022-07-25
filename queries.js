@@ -4,8 +4,8 @@ const { dbuser, dbhost, dbname, dbpassword, dbport } = require ('./config');
 const Pool = require('pg').Pool;
 const pool = new Pool({ dbuser, dbhost, dbname, dbpassword, dbport });
 
-const getUsers = (request, response) => {
-  pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+const getStories = (request, response) => {
+  pool.query('SELECT * FROM story ORDER BY story_number ASC', (error, results) => {
     if (error) {
       throw error
     }
@@ -13,17 +13,17 @@ const getUsers = (request, response) => {
   })
 }
 
-const getUserById = (request, response) => {
-  const id = parseInt(request.params.id);
+const getStoryByNumber = (request, response) => {
+  const story_number = parseInt(request.params.story_number);
 
-  pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+  pool.query('SELECT * FROM story WHERE story_number = $1', [story_number], (error, results) => {
     if (error) {
       throw error;
     }
     response.status(200).json(results.rows);
   })
 }
-
+/*
 const createUser = (request, response) => {
   const { name, email } = request.body;
 
@@ -61,11 +61,11 @@ const deleteUser = (request, response) => {
     response.status(200).send(`User deleted with ID: ${id}`);
   })
 }
-
+*/
 module.exports = {
-  getUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
+  getStories,
+  getStoryByNumber,
+  //createUser,
+  //updateUser,
+  //deleteUser,
 }
