@@ -1,4 +1,5 @@
 const { response } = require('express');
+const { dbuser, dbhost, dbname, dbpassword, dbport } = require ('./config')
 
 const Pool = require('pg').Pool;
 const pool = new Pool({
