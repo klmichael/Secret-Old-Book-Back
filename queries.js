@@ -2,13 +2,7 @@ const { response } = require('express');
 const { dbuser, dbhost, dbname, dbpassword, dbport } = require ('./config')
 
 const Pool = require('pg').Pool;
-const pool = new Pool({
-  user: 'me',
-  host: 'localhost',
-  database: 'API',
-  password: 'secret',
-  port: 5432,
-});
+const pool = new Pool({ dbuser, dbhost, dbname, dbpassword, dbport });
 
 const getUsers = (request, response) => {
   pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
